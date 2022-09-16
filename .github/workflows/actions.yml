@@ -5,13 +5,21 @@ on: [push]
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
-    steps:
+    steps:        
+      - name: Checkout
+        uses: actions/checout@v1 # clone the repo and ls
+        run: |   
+          pwd
+          ls
+          echo $GITHUB_SHA
+          echo $GITBUB_REPOSITORY
+          echo $GITHUB_WORKSPACE 
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1 # to start script from github and also rever to v1 or other branch or commit
         with:
            who-to-greet: John
       - name: Log Greeting Time
-        run: echo "${{ steps.greet.output.time}}"
+        run: echo "${{ steps.greet.output.time }}"
 
   
