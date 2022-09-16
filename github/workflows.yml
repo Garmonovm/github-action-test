@@ -1,4 +1,4 @@
-name: Shell Comands
+name: Shell Comands  # name of the pipeline
 
 on: [push] # when start pipeline
 
