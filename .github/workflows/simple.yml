@@ -15,5 +15,5 @@ jobs:
       - name: python Command
         run: |
           import platform
-          print(platform.processo())
+          print(platform.processor())
         shell: python  #on which shell/programm to use, like bash by default
