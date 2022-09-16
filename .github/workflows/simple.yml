@@ -19,7 +19,7 @@ jobs:
         shell: python  #on which shell/programm to use, like bash by default
   run-windows-command:
     runs-on: windows-latest
-    needs: ['run-shell-command']
+    needs: ['run-shell-command'] # if this run-windows-command is depend of previous job or other.Will start only then previous finishes
     steps:
       - name: Directory Powershell
         run: Get-Location
