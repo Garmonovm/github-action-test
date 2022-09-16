@@ -1,6 +1,6 @@
-name: Shell Commands  # name of the pipeline
+name: Shell Commands  # name of the pipeline#
 
-on: [push] # when start pipeline
+on: push # when start pipeline
 
 jobs:
   run-shell-command:
