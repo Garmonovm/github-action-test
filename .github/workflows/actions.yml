@@ -1,25 +1,26 @@
 name: Actions Workflow
 
-on: [push]
+on: [push, pull_request ]
 
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:        
       - name: Checkout
-        uses: actions/checout@v1 # clone the repo and ls
-        run: |   
+        uses: actions/checkout@v1 # clone the repo to VM(runner) not always required   ( @v3 or or master  or can be any commit)
+        run: |       # if you need to use linux command -> run
           pwd
           ls
           echo $GITHUB_SHA
           echo $GITBUB_REPOSITORY
           echo $GITHUB_WORKSPACE 
-      - name: Simple JS Action
+          echo "${{ github.token }}"   
+      - name: Simple JS Action  
         id: greet
         uses: actions/hello-world-javascript-action@v1 # to start script from github and also rever to v1 or other branch or commit
         with:
-           who-to-greet: John
+           who-to-greet: John # instructions how to use this action on page
       - name: Log Greeting Time
-        run: echo "${{ steps.greet.output.time }}"
+        run: echo "${{ steps.greet.output.time }}" # made by git steps.id(gaved previously to action).outpusts.time( output in action)
 
   

@@ -9,7 +9,7 @@ jobs:
       - name: echo a string
         run: echo "Hello World"
       - name: multiline script
-        run: |
+        run: |      # to use multiple commands and do not type each time run: command 
           node -v
           npm -v
       - name: python Command
