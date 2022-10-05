@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:        
       - name: Checkout
-        uses: actions/checkout@v1 # clone the repo to VM(runner) not always required   ( @v3 or or master  or can be any commit)
+        #uses: actions/checkout@v1 # clone the repo to VM(runner) not always required   ( @v3 or or master  or can be any commit)
         run: |       # if you need to use linux command -> run
           pwd
           ls
