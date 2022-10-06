@@ -1,6 +1,21 @@
 name: Actions Workflow
 
-on: [push, pull_request]
+on:
+  repository_dispatch: # to start the repo on opsramp request
+    types: [build]
+ # _____________
+# on : pull_request
+# on: 
+#   schedule:
+#     - cron: "5 * * * *"  # minimum every 5 min
+#     - cron: "10 * * * *"  # every 6 min
+#_________
+# on: [push, pull_request]
+#________
+# on:
+#   push:
+#   pull_request:
+#     types: [closed, assigned, opened, reopened]  # to also start pipeline on other actions
 
 jobs:
   run-github-actions:

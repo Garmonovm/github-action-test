@@ -1,6 +1,7 @@
 name: Shell Commands  # name of the pipeline#
 
-on: push # when start pipeline
+on: pull_request
+# on: push # when start pipeline
 
 jobs:
   run-shell-command:
