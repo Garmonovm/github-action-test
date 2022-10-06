@@ -20,7 +20,9 @@ on:
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
-    steps:        
+    steps:
+      - name: payload
+        run: echo ${{ github.event.client_payload.env}}        # to see from postman json info of the paiload event env
       - name: Checkout
         #uses: actions/checkout@v1 # clone the repo to VM(runner) not always required   ( @v3 or or master  or can be any commit)
         run: |       # if you need to use linux command -> run
