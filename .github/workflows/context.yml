@@ -26,7 +26,7 @@ jobs:
         if: failure()    
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
-        if: always #always run if anything fails   ; also can be if: successfull..
+        if: always() #always run if anything fails   ; also can be if: successfull..
       - name: Dump runner context
         run: echo '${{ toJSON(runner) }}'
       - name: Dump strategy context
