@@ -1,8 +1,28 @@
 name: Actions Workflow
 
 on:
-  repository_dispatch: # to start the repo on opsramp request
-    types: [build]
+  push:
+     branches-ignore:  # will start in all branches exept master and feauture
+       - master   
+       - 'feature/*' # any feature/a  but not feaure/feat/a 
+#________________
+# on:
+#   push:
+#      branches:
+#        - master   # will start if you push something to master branch
+#        - 'feature/*' # any feature/a  but not feaure/feat/a 
+#        - 'feature/**' # any feature/a/b/c
+#        - '!feature/featC'  #Even it match to feature branch, with ! we can exclude it from perform it here
+#      tags:    # or tags-ignore
+#        - v1.*
+#      paths:
+#        - '**.js'    #  when we will push any JS file workflow will run, and won't run if any others with path
+#        - '!**.py'  # exclude path any py scripts won't start
+#                     # or paths-ignore (can't be in the same time) for ex -'docs/**'
+#_______________
+# on:
+#   repository_dispatch: # to start the repo on opsramp request
+#     types: [build]
  # _____________
 # on : pull_request
 # on: 
