@@ -1,8 +1,18 @@
-name: Context testing
+name: Context
 on: push
 
-jobs:  # to json -> convert the output to json
-  dump_contexts_to_log:
+jobs:
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        run: |
+          echo ${{ contains( 'hello', 'll') }}
+          echo ${{ startsWith( 'hello', 'he') }}
+          echo ${{ endsWith( 'hello', 'lo') }}
+          echo ${{ format('Hello {0} {1} {2}', 'World', '!', '!') }}
+
+  dump_contexts_to_log: # to json -> convert the output to json
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
