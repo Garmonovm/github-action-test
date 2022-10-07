@@ -1,10 +1,10 @@
 name: Actions Workflow
 
-on:
-  push:
-     branches-ignore:  # will start in all branches exept master and feauture
-       - master   
-       - 'feature/*' # any feature/a  but not feaure/feat/a 
+# on:
+#   push:
+#      branches-ignore:  # will start in all branches exept master and feauture
+#        - master   
+#        - 'feature/*' # any feature/a  but not feaure/feat/a 
 #________________
 # on:
 #   push:

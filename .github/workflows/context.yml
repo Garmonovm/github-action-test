@@ -1,5 +1,5 @@
 name: Context
-on: push
+on: [push, pull_request] 
 
 jobs:
   functions:
@@ -11,17 +11,22 @@ jobs:
           echo ${{ startsWith( 'hello', 'he') }}
           echo ${{ endsWith( 'hello', 'lo') }}
           echo ${{ format('Hello {0} {1} {2}', 'World', '!', '!') }}
+  one:
+    runs-on: ubuntu-18.04
+    if: github.event_name == 'push'
 
-  dump_contexts_to_log: # to json -> convert the output to json
-    runs-on: ubuntu-latest
+  # dump_contexts_to_log: # to json -> convert the output to json
+  #   runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+        run: eccho '${{ toJSON(github) }}'  # error here, so next step will fail ,but can put-> if: failure()
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
+        if: failure()    
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
+        if: always #always run if anything fails   ; also can be if: successfull..
       - name: Dump runner context
         run: echo '${{ toJSON(runner) }}'
       - name: Dump strategy context
