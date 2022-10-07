@@ -1,5 +1,5 @@
 name: Actions Workflow
-
+on: pull_request
 # on:
 #   push:
 #      branches-ignore:  # will start in all branches exept master and feauture
