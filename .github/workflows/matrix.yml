@@ -3,13 +3,20 @@ on: push
 
 jobs:
   node-version:
-    runs-on: ubuntu-latest
+    strategy:  # using to have multiple testings
+      matrix:
+        os: [macos-latest,ubuntu-latest, windows-latest] # so it will be started 9 time, mac-os 6,8,10 etc..
+        node_version: [6,8,10] # if we need to test it on differents node.js version; all jobs will be in parallel
+    #  fail-fast: true # to start independent jobs with node.js 6 ,8,10 doesn't matter if any failed
+    # max-parallel: 2 # max parrallel jobs
+    #runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Log node version 
         run: node -v # display currecnt node.js version on this machine
-      - uses: actions/setup-node@v3   # will change node-version to 16
+      - uses: actions/setup-node@v3   # will change node-version.js to 16
         with:
-          node-version: 6
+          #node-version: 6    # only 1 version
+          node-version: ${{ matrix.node_version }}
       - name: Log node version again
         run: node -v # display currecnt node version on this machine
-        
