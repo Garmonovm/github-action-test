@@ -7,10 +7,19 @@ jobs:
       matrix:
         os: [macos-latest,ubuntu-latest, windows-latest] # so it will be started 9 time, mac-os 6,8,10 etc..
         node_version: [6,8,10] # if we need to test it on differents node.js version; all jobs will be in parallel
+        include:  #to include extra variable that allready exist in metrics
+          - os: ubuntu-latest
+            node-version: 8
+            is_ubuntu_8: 'true'
+        exclude:
+          - os: ubuntu-latest  # to do not start on ubuntu 6 version
+            node_version: 6
     #  fail-fast: true # to start independent jobs with node.js 6 ,8,10 doesn't matter if any failed
     # max-parallel: 2 # max parrallel jobs
     #runs-on: ubuntu-latest
     runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU-8: ${{ matrix.is_ubuntu_8 }}
     steps:
       - name: Log node version 
         run: node -v # display currecnt node.js version on this machine
@@ -19,4 +28,6 @@ jobs:
           #node-version: 6    # only 1 version
           node-version: ${{ matrix.node_version }}
       - name: Log node version again
-        run: node -v # display currecnt node version on this machine
+        run: |
+          node -v
+          echo $IS_UBUNTU-8
