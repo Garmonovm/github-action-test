@@ -1,0 +1,14 @@
+name: matrix
+on: push
+
+jobs:
+  node-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log node version 
+        run: node -v # display currecnt node.js version on this machine
+      - uses: actions/setup-node@v3   # will change node-version to 16
+        with:
+          node-version: 6
+      - name: Log node version again
+        run: node -v # display currecnt node version on this machine
