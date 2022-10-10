@@ -12,3 +12,4 @@ jobs:
           node-version: 6
       - name: Log node version again
         run: node -v # display currecnt node version on this machine
+        
